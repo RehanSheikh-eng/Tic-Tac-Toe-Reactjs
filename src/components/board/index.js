@@ -26,6 +26,10 @@ class Board extends Component{
       const squares = this.state.squares.slice();
       squares[i] = this.state.xIsNext ? "X" : "O";
 
+      if(calculateWinner(squares) || squares[i]){
+        return;
+      }
+
       this.setState({
         squares: squares,
         xIsNext: !this.state.xIsNext,
@@ -33,8 +37,17 @@ class Board extends Component{
     }
 
     render(){
+        const winner = calculateWinner(this.state.squares);
+        let status;
 
-        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        if(winner){
+          status = "Winner: " + winner; 
+        }
+
+        else{
+          status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
+
         return (
             <div>
               <div className="status">{status}</div>
