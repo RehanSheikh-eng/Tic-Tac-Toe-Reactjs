@@ -1,5 +1,5 @@
-import { getAllByAltText } from '@testing-library/react';
-import {React, Component} from 'react';
+
+import {React} from 'react';
 import '../../index.css'
 
 function Square(props) {
