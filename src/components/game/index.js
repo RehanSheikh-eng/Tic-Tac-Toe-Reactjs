@@ -1,6 +1,8 @@
 import { Component } from "react";
 import Board from '../board'
 import '../../index.css'
+import Button from '@material-ui/core/Button';
+import { ButtonGroup } from "@material-ui/core";
 
 
 class Game extends Component {
@@ -40,6 +42,7 @@ class Game extends Component {
   }
 
   render() {
+    
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
@@ -49,11 +52,21 @@ class Game extends Component {
         'Go to move #' + move :
         'Go to game start';
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+        <ButtonGroup 
+          variant="contained"
+          color="primary"
+          aria-label="contained primary button group key={move}"
+        >
+          <Button
+            variant="outlined"
+            onClick={() => this.jumpTo(move)}
+          >
+              {desc}
+          </Button>
+        </ButtonGroup>
       );
     });
+
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
