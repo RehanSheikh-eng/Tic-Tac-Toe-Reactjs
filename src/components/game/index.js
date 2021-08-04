@@ -1,4 +1,6 @@
 import { Component } from "react";
+import Board from '../board'
+import '../../index.css'
 
 
 class Game extends Component{
@@ -16,3 +18,5 @@ class Game extends Component{
         );
     }
 }
+
+export default Game
